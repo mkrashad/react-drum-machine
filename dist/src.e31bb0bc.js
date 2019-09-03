@@ -30609,7 +30609,7 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"App.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"components/Buttons.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30639,21 +30639,142 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+var Buttons =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Buttons, _Component);
+
+  function Buttons() {
+    _classCallCheck(this, Buttons);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Buttons).apply(this, arguments));
+  }
+
+  _createClass(Buttons, [{
+    key: "render",
+    value: function render() {
+      var pads = this.props.pads; // const sound = this.props.sound;
+
+      return _react.default.createElement("div", null, pads.map(function (pad, index) {
+        return _react.default.createElement("button", {
+          className: "drum-pad",
+          id: index,
+          key: index
+        }, pad.label, _react.default.createElement("audio", {
+          id: pad.label,
+          src: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283",
+          className: "clip"
+        }));
+      }));
+    }
+  }]);
+
+  return Buttons;
+}(_react.Component);
+
+var _default = Buttons;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js"}],"App.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Buttons = _interopRequireDefault(require("./components/Buttons"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+// const sounds = {
+//   green: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"),
+//   blue: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3 110"),
+//   pink: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3 72"),
+//   yellow: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3 88")
+//   }
 var App =
 /*#__PURE__*/
 function (_Component) {
   _inherits(App, _Component);
 
-  function App() {
+  function App(props) {
+    var _this;
+
     _classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(App).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
+    _this.state = {
+      pads: [{
+        label: "Q",
+        sound: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
+      }, {
+        label: "W",
+        sound: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
+      }, {
+        label: "E",
+        sound: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
+      }, {
+        label: "A",
+        sound: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
+      }, {
+        label: "S",
+        sound: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
+      }, {
+        label: "D",
+        sound: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
+      }, {
+        label: "Z",
+        sound: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
+      }, {
+        label: "X",
+        sound: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
+      }, {
+        label: "C",
+        sound: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
+      }]
+    };
+    _this.handeleClick = _this.handeleClick.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(App, [{
+    key: "handeleClick",
+    value: function handeleClick() {
+      this.setState({});
+    }
+  }, {
     key: "render",
     value: function render() {
-      return _react.default.createElement("div", null, "Hello World!");
+      return _react.default.createElement("div", {
+        id: "drum-machine"
+      }, _react.default.createElement("div", {
+        id: "display"
+      }, _react.default.createElement(_Buttons.default, {
+        pads: this.state.pads,
+        onClick: this.handeleClick
+      })));
     }
   }]);
 
@@ -30662,7 +30783,7 @@ function (_Component) {
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js"}],"index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./components/Buttons":"components/Buttons.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -30702,7 +30823,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33233" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35289" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
