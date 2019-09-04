@@ -1,13 +1,6 @@
 import React, { Component } from "react";
 import Button from "./components/Buttons";
 
-// const sounds = {
-//   green: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"),
-//   blue: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3 110"),
-//   pink: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3 72"),
-//   yellow: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3 88")
-//   }
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -15,57 +8,75 @@ class App extends Component {
       pads: [
         {
           label: "Q",
-          sound: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
+          sound: "https://www.kozco.com/tech/piano2.wav",
+          triggered: false
         },
         {
           label: "W",
-          sound: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
+          sound: "https://www.kozco.com/tech/piano2.wav",
+          triggered: false
         },
         {
           label: "E",
-          sound: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
+          sound: "https://www.kozco.com/tech/piano2.wav",
+          triggered: false
         },
         {
           label: "A",
-          sound: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
+          sound: "https://www.kozco.com/tech/piano2.wav",
+          triggered: false
         },
         {
           label: "S",
-          sound: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
+          sound: "https://www.kozco.com/tech/piano2.wav",
+          triggered: false
         },
         {
           label: "D",
-          sound: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
+          sound: "https://www.kozco.com/tech/piano2.wav",
+          triggered: false
         },
         {
           label: "Z",
-          sound: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
+          sound: "https://www.kozco.com/tech/piano2.wav",
+          triggered: false
         },
         {
           label: "X",
-          sound: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
+          sound: "https://www.kozco.com/tech/piano2.wav",
+          triggered: false
         },
         {
           label: "C",
-          sound: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
+          sound: "https://www.kozco.com/tech/piano2.wav",
+          triggered: false
         }
       ]
     };
 
-    this.handeleClick = this.handeleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  handeleClick() {
-    this.setState({
-      
-    })
+  handleClick(index, pad) {
+    const newPads = [...this.state.pads];
+    newPads[index].triggered = !newPads[index].triggered ? true : false;
+    this.setState(newPads);
+    const source = pad.sound;
+    const audio = new Audio(source);
+    if (this.state.pads[index].triggered) {
+      audio.play();
+      console.log(newPads[index].triggered);
+    } else {
+      audio.pause();
+      console.log(newPads[index].triggered);
+    }
   }
 
   render() {
     return (
       <div id="drum-machine">
         <div id="display">
-          <Button pads={this.state.pads} onClick={this.handeleClick} />
+          <Button pads={this.state.pads} onClick={this.handleClick} />
         </div>
       </div>
     );

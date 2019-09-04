@@ -3,17 +3,13 @@ import React, { Component } from "react";
 class Buttons extends Component {
   render() {
     const pads = this.props.pads;
-    // const sound = this.props.sound;
+    const onClick = this.props.onClick;
     return (
       <div>
         {pads.map((pad, index) => (
-          <button className="drum-pad" id={index} key={index}>
+          <button className="drum-pad" id={index} key={index} onClick={()=> onClick(index, pad)}>
             {pad.label}
-            <audio
-              id={pad.label}
-              src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
-              className="clip"
-            ></audio>
+            <audio id={pad.label} src={pad.sound} className="clip"></audio>
           </button>
         ))}
       </div>

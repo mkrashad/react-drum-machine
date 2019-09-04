@@ -30653,16 +30653,19 @@ function (_Component) {
   _createClass(Buttons, [{
     key: "render",
     value: function render() {
-      var pads = this.props.pads; // const sound = this.props.sound;
-
+      var pads = this.props.pads;
+      var _onClick = this.props.onClick;
       return _react.default.createElement("div", null, pads.map(function (pad, index) {
         return _react.default.createElement("button", {
           className: "drum-pad",
           id: index,
-          key: index
+          key: index,
+          onClick: function onClick() {
+            return _onClick(index, pad);
+          }
         }, pad.label, _react.default.createElement("audio", {
           id: pad.label,
-          src: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283",
+          src: pad.sound,
           className: "clip"
         }));
       }));
@@ -30692,6 +30695,14 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -30708,12 +30719,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-// const sounds = {
-//   green: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"),
-//   blue: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3 110"),
-//   pink: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3 72"),
-//   yellow: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3 88")
-//   }
 var App =
 /*#__PURE__*/
 function (_Component) {
@@ -30728,41 +30733,63 @@ function (_Component) {
     _this.state = {
       pads: [{
         label: "Q",
-        sound: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
+        sound: "https://www.kozco.com/tech/piano2.wav",
+        triggered: false
       }, {
         label: "W",
-        sound: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
+        sound: "https://www.kozco.com/tech/piano2.wav",
+        triggered: false
       }, {
         label: "E",
-        sound: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
+        sound: "https://www.kozco.com/tech/piano2.wav",
+        triggered: false
       }, {
         label: "A",
-        sound: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
+        sound: "https://www.kozco.com/tech/piano2.wav",
+        triggered: false
       }, {
         label: "S",
-        sound: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
+        sound: "https://www.kozco.com/tech/piano2.wav",
+        triggered: false
       }, {
         label: "D",
-        sound: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
+        sound: "https://www.kozco.com/tech/piano2.wav",
+        triggered: false
       }, {
         label: "Z",
-        sound: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
+        sound: "https://www.kozco.com/tech/piano2.wav",
+        triggered: false
       }, {
         label: "X",
-        sound: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
+        sound: "https://www.kozco.com/tech/piano2.wav",
+        triggered: false
       }, {
         label: "C",
-        sound: "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3 283"
+        sound: "https://www.kozco.com/tech/piano2.wav",
+        triggered: false
       }]
     };
-    _this.handeleClick = _this.handeleClick.bind(_assertThisInitialized(_this));
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(App, [{
-    key: "handeleClick",
-    value: function handeleClick() {
-      this.setState({});
+    key: "handleClick",
+    value: function handleClick(index, pad) {
+      var newPads = _toConsumableArray(this.state.pads);
+
+      newPads[index].triggered = !newPads[index].triggered ? true : false;
+      this.setState(newPads);
+      var source = pad.sound;
+      var audio = new Audio(source);
+
+      if (this.state.pads[index].triggered) {
+        audio.play();
+        console.log(newPads[index].triggered);
+      } else {
+        audio.pause();
+        console.log(newPads[index].triggered);
+      }
     }
   }, {
     key: "render",
@@ -30773,7 +30800,7 @@ function (_Component) {
         id: "display"
       }, _react.default.createElement(_Buttons.default, {
         pads: this.state.pads,
-        onClick: this.handeleClick
+        onClick: this.handleClick
       })));
     }
   }]);
@@ -30823,7 +30850,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35289" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38097" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
