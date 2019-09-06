@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import Button from "./components/Buttons";
+import React from "react";
+import Buttons from "./components/Buttons";
 
-class App extends Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -54,33 +54,32 @@ class App extends Component {
       ]
     };
 
-    this.handleClick = this.handleClick.bind(this);
+    this.playSound = this.playSound.bind(this);
   }
 
-  handleClick(index, pad) {
+  playSound(pad, index) {
     const newPads = [...this.state.pads];
     newPads[index].triggered = !newPads[index].triggered ? true : false;
     this.setState(newPads);
-    const source = pad.sound;
-    const audio = new Audio(source);
-    if (this.state.pads[index].triggered) {
-      audio.play();
-      console.log(newPads[index].triggered);
-    } else {
-      audio.pause();
-      console.log(newPads[index].triggered);
+
+    const x = document.getElementById(pad.label);
+    if(this.state.pads[index].triggered){
+      x.play();
     }
+    else {
+      x.pause();
+    }
+   
   }
 
   render() {
     return (
       <div id="drum-machine">
         <div id="display">
-          <Button pads={this.state.pads} onClick={this.handleClick} />
+          <Buttons pads={this.state.pads} onClick={this.playSound}/>
         </div>
       </div>
     );
   }
 }
 
-export default App;

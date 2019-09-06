@@ -30661,7 +30661,7 @@ function (_Component) {
           id: index,
           key: index,
           onClick: function onClick() {
-            return _onClick(index, pad);
+            return _onClick(pad, index);
           }
         }, pad.label, _react.default.createElement("audio", {
           id: pad.label,
@@ -30685,13 +30685,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = _interopRequireDefault(require("react"));
 
 var _Buttons = _interopRequireDefault(require("./components/Buttons"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -30721,8 +30719,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 var App =
 /*#__PURE__*/
-function (_Component) {
-  _inherits(App, _Component);
+function (_React$Component) {
+  _inherits(App, _React$Component);
 
   function App(props) {
     var _this;
@@ -30769,26 +30767,23 @@ function (_Component) {
         triggered: false
       }]
     };
-    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
+    _this.playSound = _this.playSound.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(App, [{
-    key: "handleClick",
-    value: function handleClick(index, pad) {
+    key: "playSound",
+    value: function playSound(pad, index) {
       var newPads = _toConsumableArray(this.state.pads);
 
       newPads[index].triggered = !newPads[index].triggered ? true : false;
       this.setState(newPads);
-      var source = pad.sound;
-      var audio = new Audio(source);
+      var x = document.getElementById(pad.label);
 
       if (this.state.pads[index].triggered) {
-        audio.play();
-        console.log(newPads[index].triggered);
+        x.play();
       } else {
-        audio.pause();
-        console.log(newPads[index].triggered);
+        x.pause();
       }
     }
   }, {
@@ -30800,16 +30795,15 @@ function (_Component) {
         id: "display"
       }, _react.default.createElement(_Buttons.default, {
         pads: this.state.pads,
-        onClick: this.handleClick
+        onClick: this.playSound
       })));
     }
   }]);
 
   return App;
-}(_react.Component);
+}(_react.default.Component);
 
-var _default = App;
-exports.default = _default;
+exports.default = App;
 },{"react":"../node_modules/react/index.js","./components/Buttons":"components/Buttons.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
@@ -30850,7 +30844,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38097" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46703" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

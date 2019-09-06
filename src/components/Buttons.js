@@ -7,7 +7,7 @@ class Buttons extends Component {
     return (
       <div>
         {pads.map((pad, index) => (
-          <button className="drum-pad" id={index} key={index} onClick={()=> onClick(index, pad)}>
+          <button className="drum-pad" id={index} key={index} onClick={()=> onClick(pad,index)}>
             {pad.label}
             <audio id={pad.label} src={pad.sound} className="clip"></audio>
           </button>
