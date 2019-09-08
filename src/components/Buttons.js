@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 
-class Buttons extends Component {
-  render() {
+export default class Buttons extends React.Component {
+  render() { 
     const pads = this.props.pads;
     const onClick = this.props.onClick;
     return (
@@ -17,4 +18,8 @@ class Buttons extends Component {
   }
 }
 
-export default Buttons;
+Buttons.propTypes = {
+  pads: PropTypes.array,
+  playSound: PropTypes.func
+}
+
