@@ -1,7 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import Buttons from "./components/Buttons";
+import Switcher from "./components/Switcher";
+import "./styles/styles.css"
 
-export default class App extends React.Component {
+ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -54,32 +56,44 @@ export default class App extends React.Component {
       ]
     };
 
+    this.toggleButton = this.toggleButton.bind(this);
     this.playSound = this.playSound.bind(this);
   }
 
-  playSound(pad, index) {
-    const newPads = [...this.state.pads];
-    newPads[index].triggered = !newPads[index].triggered ? true : false;
-    this.setState(newPads);
+  toggleButton(e) {
+    const index = e.target.id;
+    let newPads = [...this.state.pads];
 
-    const x = document.getElementById(pad.label);
-    if(this.state.pads[index].triggered){
-      x.play();
+    console.log(e.target.lastChild.id)
+    let link = e.target.lastChild.id;
+    
+
+    if (!this.state.pads[index].triggered) {
+        newPads[index].triggered = true;
+        this.setState(newPads);
+        document.getElementById(link).play();
+        
+    } else {
+      newPads = [...this.state.pads];
+      newPads[index].triggered = false;
+      this.setState(newPads);
     }
-    else {
-      x.pause();
-    }
-   
   }
 
-  render() {
-    return (
-      <div id="drum-machine">
-        <div id="display">
-          <Buttons pads={this.state.pads} onClick={this.playSound}/>
-        </div>
+  playSound() {
+    console.log("Hello world")
+  }
+
+  render(){
+  return (
+    <div id="drum-machine">
+      <div id="display" style={{ margin: "10rem" }}>
+        <Switcher triggered={this.state.pads.triggered} onChange={this.toggleButton}/>
+        <Buttons pads={this.state.pads} onClick={this.playSound}/>
       </div>
-    );
+    </div>
+  );
   }
 }
 
+export default App;

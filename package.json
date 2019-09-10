@@ -9,12 +9,13 @@
   "author": "Rashad Mahmudov",
   "license": "MIT",
   "dependencies": {
-    "pro": "^0.3.0",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react-dom": "^16.9.0",
+    "react-toggle-button": "^2.2.0"
   },
   "devDependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "parcel-bundler": "^1.12.3"
