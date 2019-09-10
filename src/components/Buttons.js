@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
               className="drum-pad"
               id={index}
               key={index}
-              onClick={this.toggleButton}
+              onClick={this.props.onClick}
             >
               {pad.label}
               <audio id={pad.label} src={pad.sound} className="clip"></audio>
@@ -22,8 +22,8 @@ import PropTypes from "prop-types";
   }
 }
 
-Buttons.propTypes = {
-  toggleButton: PropTypes.func
-};
+// Buttons.propTypes = {
+//   toggleButton: PropTypes.func
+// };
 
 export default Buttons;
