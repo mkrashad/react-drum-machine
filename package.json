@@ -9,12 +9,14 @@
   "author": "Rashad Mahmudov",
   "license": "MIT",
   "dependencies": {
+    "bootstrap4-toggle": "^3.5.0",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-toggle-button": "^2.2.0"
   },
   "devDependencies": {
+    "babel-core": "^6.26.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",

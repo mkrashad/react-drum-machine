@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 
  class Buttons extends Component {
   render() {
-    const pads = this.props.pads; 
+    const pads = this.props.pads;
     return (
         <div>
           {pads.map((pad, index) => (
             <button
               className="drum-pad"
-              id={index}
+              id={pad.keyCode}
               key={index}
               onClick={this.props.onClick}
             >
