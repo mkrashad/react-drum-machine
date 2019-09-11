@@ -1,29 +1,30 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
- class Buttons extends Component {
+class Buttons extends Component {
   render() {
     const pads = this.props.pads;
     return (
-        <div>
-          {pads.map((pad, index) => (
-            <button
-              className="drum-pad"
-              id={pad.keyCode}
-              key={index}
-              onClick={this.props.onClick}
-            >
-              {pad.label}
-              <audio id={pad.label} src={pad.sound} className="clip"></audio>
-            </button>
-          ))}
-        </div>
+      <div>
+        {pads.map((pad, index) => (
+          <button
+            className="drum-pad"
+            id={pad.keyCode}
+            key={index}
+            onClick={this.props.onClick}
+          >
+            {pad.label}
+            <audio id={pad.label} src={pad.sound} className="clip"></audio>
+          </button>
+        ))}
+      </div>
     );
   }
 }
 
-// Buttons.propTypes = {
-//   toggleButton: PropTypes.func
-// };
+Buttons.propTypes = {
+  toggleButton: PropTypes.func,
+  pads: PropTypes.array
+};
 
 export default Buttons;

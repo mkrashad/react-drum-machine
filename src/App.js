@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Buttons from "./components/Buttons";
-import Switcher from "./components/Switcher";
+import Switch from "./components/Switch";
 import "./styles/styles.css";
 
 class App extends Component {
@@ -79,15 +79,17 @@ class App extends Component {
     let link = e.target.lastChild.id;
     if (!this.state.triggered) {
       document.getElementById(link).play();
+      document.getElementById("display").innerText = link;
     }
   }
 
   keyPress(e) {
-    const audio = document.getElementsByTagName('audio');
+    const audio = document.getElementsByTagName("audio");
     this.state.pads.map(pad => {
       if (!this.state.triggered && e.keyCode === pad.keyCode) {
         const link = audio[pad.label].id;
         document.getElementById(link).play();
+        document.getElementById("display").innerText = link;
       }
     });
   }
@@ -95,13 +97,11 @@ class App extends Component {
   render() {
     return (
       <div id="drum-machine">
-        <div id="display" style={{ margin: "10rem" }}>
-          <Switcher
-            triggered={this.state.triggered}
-            onChange={this.toggleButton}
-          />
-          <Buttons pads={this.state.pads} onClick={this.playSound}/>
+        <div id="display" style={{ margin: "10rem", backgroundColor: "gray" }}>
+          Please press any key
         </div>
+        <Switch onChange={this.toggleButton} />
+        <Buttons pads={this.state.pads} onClick={this.playSound} />
       </div>
     );
   }
