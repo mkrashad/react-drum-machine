@@ -75,6 +75,7 @@ class App extends Component {
     });
   }
 
+  //
   playSound(e) {
     let link = e.target.lastChild.id;
     if (!this.state.triggered) {
