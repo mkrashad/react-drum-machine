@@ -1,15 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
-class Switch extends Component {
-  render() {
+function Switch (props) {
     return (
       <label className="switch">
-        <input id="checkbox" type="checkbox" onChange={this.props.onChange} />
+        <input id="checkbox" type="checkbox" onChange={props.onChange} />
         <span className="slider"></span>
       </label>
     );
-  }
 }
 
 Switch.propTypes = {

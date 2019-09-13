@@ -1,9 +1,10 @@
 import React from "react";
 
-function Display() {
+function Display(props) {
+  const triggered = props.triggered;
   return (
     <div id="display" style={{ margin: "10rem", backgroundColor: "gray" }}>
-      Please press any key
+      { triggered ? "Power Off" : "Power On"}
     </div>
   );
 }

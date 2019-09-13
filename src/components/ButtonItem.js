@@ -1,9 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 
-class ButtonItem extends Component {
-  render() {
-    const pad = this.props.pad;
-    const onClick = this.props.onClick;
+function ButtonItem(props) {
+    const pad = props.pad;
+    const onClick = props.onClick;
     return (
       <div>
         <button className="drum-pad" id={pad.id} onClick={onClick}>
@@ -12,7 +11,6 @@ class ButtonItem extends Component {
         </button>
       </div>
     );
-  }
 }
 
 export default ButtonItem;

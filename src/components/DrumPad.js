@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Display from "./Display";
 import ButtonItem from "./ButtonItem";
 import Switch from "./Switch";
 
@@ -88,7 +89,7 @@ class DrumPad extends Component {
   playSound(e) {
     let link = e.target.lastChild.id;
     if (!this.state.triggered) {
-      document.getElementById(link).play(); 
+      document.getElementById(link).play();
       document.getElementById("display").innerText = e.target.id;
     }
   }
@@ -99,7 +100,7 @@ class DrumPad extends Component {
     pads.map(pad => {
       if (!this.state.triggered && e.keyCode === pad.keyCode) {
         const link = audio[pad.label].id;
-        const text = button[pad.id].id
+        const text = button[pad.id].id;
         document.getElementById(link).play();
         document.getElementById("display").innerText = text;
       }
@@ -109,6 +110,7 @@ class DrumPad extends Component {
   render() {
     return (
       <div>
+        <Display triggered={this.state.triggered} />
         <Switch onChange={this.toggleButton} />
         {pads.map(pad => (
           <ButtonItem pad={pad} key={pad.id} onClick={this.playSound} />
