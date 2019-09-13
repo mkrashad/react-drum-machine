@@ -5,7 +5,7 @@ class Switch extends Component {
   render() {
     return (
       <label className="switch">
-        <input id="checkbox" type="checkbox" onChange={this.props.onChange}/>
+        <input id="checkbox" type="checkbox" onChange={this.props.onChange} />
         <span className="slider"></span>
       </label>
     );
