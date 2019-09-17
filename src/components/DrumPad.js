@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import { Card, CardContent } from "@material-ui/core";
 import Display from "./Display";
 import ButtonItem from "./ButtonItem";
-import Switch from "./Switch";
+import SwitchButton from "./SwitchButton";
 
 const pads = [
   {
@@ -109,13 +110,17 @@ class DrumPad extends Component {
 
   render() {
     return (
-      <div>
-        <Display triggered={this.state.triggered} />
-        <Switch toggleButton={this.toggleButton} />
-        {pads.map(pad => (
-          <ButtonItem pad={pad} key={pad.id} playSound={this.playSound} />
-        ))}
-      </div>
+      <Card className="card">
+        <CardContent>
+          <Display triggered={this.state.triggered} />
+          <SwitchButton toggleButton={this.toggleButton} />
+          <div className="drum">
+            {pads.map(pad => (
+              <ButtonItem pad={pad} key={pad.id} playSound={this.playSound} />
+            ))}
+          </div>
+        </CardContent>
+      </Card>
     );
   }
 }
