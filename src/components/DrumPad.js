@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, CardContent } from "@material-ui/core";
+import { MDBCard, MDBContainer, MDBCardBody } from "mdbreact";
 import Display from "./Display";
 import ButtonItem from "./ButtonItem";
 import SwitchButton from "./SwitchButton";
@@ -88,7 +88,7 @@ class DrumPad extends Component {
   }
 
   playSound(e) {
-    let link = e.target.lastChild.id;
+    let link = e.target.firstElementChild.id;
     if (!this.state.triggered) {
       document.getElementById(link).play();
       document.getElementById("display").innerText = e.target.id;
@@ -110,8 +110,8 @@ class DrumPad extends Component {
 
   render() {
     return (
-      <Card className="card">
-        <CardContent>
+      <MDBCard className="card">
+        <MDBCardBody>
           <Display triggered={this.state.triggered} />
           <SwitchButton toggleButton={this.toggleButton} />
           <div className="drum">
@@ -119,8 +119,8 @@ class DrumPad extends Component {
               <ButtonItem pad={pad} key={pad.id} playSound={this.playSound} />
             ))}
           </div>
-        </CardContent>
-      </Card>
+        </MDBCardBody>
+      </MDBCard>
     );
   }
 }

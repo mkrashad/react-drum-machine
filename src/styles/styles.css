@@ -1,4 +1,4 @@
-/* .switch {
+.switch {
   position: relative;
   display: inline-block;
   width: 60px;
@@ -19,8 +19,8 @@
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
@@ -31,33 +31,43 @@
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
-input:checked+.slider {
-  background-color: #2196F3;
+input:checked + .slider {
+  background-color: #2196f3;
 }
 
-input:focus+.slider {
-  box-shadow: 0 0 1px #2196F3;
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
 }
 
-input:checked+.slider:before {
+input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
-} */
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
 
 .card {
-  width: 50%;
+  width: 25rem;
   height: 30rem;
   text-align: center;
   margin: 5rem auto;
 }
 
 #display {
-  width: 30%;
+  width: 35%;
+  height: 50px;
   margin: 2% 0;
   border: 1px solid red;
 }
@@ -68,17 +78,15 @@ input:checked+.slider:before {
 }
 
 .drum {
-  margin: 0 0 0 35%;
-  border: 3px solid green;
-  width: 350px;
+  border: 1px solid green;
   display: grid;
   grid-template-columns: 10% 10% 10%;
-  grid-column-gap: 80px;
-  grid-row-gap: 20px;
+  grid-column-gap: 5rem;
+  grid-row-gap: 1.2rem;
 }
 
 .drum-pad {
-  height: 80px;
-  width: 100px;
+  height: 5rem;
+  width: 6rem;
   border-radius: 10%;
 }
