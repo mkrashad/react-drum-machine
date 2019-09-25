@@ -59,30 +59,31 @@ input:checked + .slider:before {
 }
 
 .card {
-  width: 25rem;
-  height: 30rem;
+  width: 35rem;
+  height: 20rem;
   text-align: center;
   margin: 5rem auto;
 }
 
 #display {
-  width: 35%;
-  height: 50px;
-  margin: 2% 0;
-  border: 1px solid red;
+  width: 6rem;
+  height: 2rem;
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+  margin-bottom: 15%;
 }
 
 .toggle {
-  width: 10%;
-  border: 1px solid red;
+  
 }
 
 .drum {
-  border: 1px solid green;
-  display: grid;
+  /* display: grid;
   grid-template-columns: 10% 10% 10%;
   grid-column-gap: 5rem;
-  grid-row-gap: 1.2rem;
+  grid-row-gap: 1.2rem; */
 }
 
 .drum-pad {

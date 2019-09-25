@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { MDBCard, MDBContainer, MDBCardBody } from "mdbreact";
+import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody } from "mdbreact";
 import Display from "./Display";
 import ButtonItem from "./ButtonItem";
 import SwitchButton from "./SwitchButton";
@@ -110,15 +110,25 @@ class DrumPad extends Component {
 
   render() {
     return (
-      <MDBCard className="card">
+      <MDBCard className="card cloudy-knoxville-gradient" >
         <MDBCardBody>
-          <Display triggered={this.state.triggered} />
-          <SwitchButton toggleButton={this.toggleButton} />
-          <div className="drum">
-            {pads.map(pad => (
-              <ButtonItem pad={pad} key={pad.id} playSound={this.playSound} />
-            ))}
-          </div>
+          <MDBContainer>
+            <MDBRow>
+              <MDBCol size="9" style={{ "border": "1px solid red" }}>
+                {pads.map(pad => (
+                  <ButtonItem
+                    pad={pad}
+                    key={pad.id}
+                    playSound={this.playSound}
+                  />
+                ))}
+              </MDBCol>
+              <MDBCol size="3" style={{ "border": "1px solid red" }}>
+                <Display triggered={this.state.triggered} />
+                <SwitchButton toggleButton={this.toggleButton} />
+              </MDBCol>
+            </MDBRow>
+          </MDBContainer>
         </MDBCardBody>
       </MDBCard>
     );
